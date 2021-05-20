@@ -11,13 +11,13 @@
 
 <body>
     <div class="wrapper">
-        <form action="http://localhost:5000/record_search" method="POST">
+        <form method="POST" >
             <section class="location">
             
                 <fieldset>
                     <p>Select the location to look for jobs</p>
                     <label>Chicago
-                        <input type="radio" name="location" value="Chicago" checked/>
+                        <input  type="radio" name="location" value="Chicago" checked/>
                         <span></span>
                     </label>
                     <label>San Francisco
@@ -72,7 +72,7 @@
                     </label>
                 </fieldset>
             </section>
-            <button type="submit"> Submit </button>
+            <button type="submit"> Search </button>
         </form>
     </div>
     <section class="results"></section>
