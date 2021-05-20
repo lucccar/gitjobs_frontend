@@ -7,7 +7,7 @@ form.addEventListener("submit", function(e) {
 
 // https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_forms_through_JavaScript
 function sendData() {
-  var XHR = new XMLHttpRequest();
+  // var XHR = new XMLHttpRequest();
   let search = {}
 
   // radio buttons
@@ -28,33 +28,44 @@ function sendData() {
   }
 
   // If search is successful  
-  XHR.addEventListener("load", function(event) {
-    if (XHR.readyState === XHR.DONE) {
-      if (XHR.status === 200) {
-        alert("Your order has been received! Check your email.");
-        results.innerText  = XHR.responseText;
-      } else {
-        return;
-      }
-    }
-  });
+  // XHR.addEventListener("load", function(event) {
+  //   if (XHR.readyState === XHR.DONE) {
+  //     if (XHR.status === 200) {
+  //       alert("Your order has been received! Check your email.");
+  //       results.innerText  = XHR.responseText;
+  //     } else {
+  //       return;
+  //     }
+  //   }
+  // });
 
   // Set up our request
-  XHR.open(form.getAttribute("method"), form.getAttribute("action"));
-  XHR.setRequestHeader("Content-Type", "application/json");
-  XHR.send(JSON.stringify(search));
+  // XHR.open(form.getAttribute("method"), form.getAttribute("action"));
+  // XHR.setRequestHeader("Content-Type", "application/json");
+  // XHR.send(search);
+
+
+
+
+  // fetch(form.getAttribute("action"), {
+  //   method: form.getAttribute("method"),body: JSON.stringify(search)})
+  //     .then(function(response) {return response.json();})
+  //     .then(function(data) {
+  //       console.log("Data returned from python server", data)
+  // });
+
+  let response = await fetch(form.getAttribute("action"), {
+    method: form.getAttribute("method"),
+    headers: {'Content-Type': 'application/json'},
+    json: JSON.stringify(search),
+    body: JSON.stringify(search),
+    mode: "cors"
+  });
+
+  let result = await response.json();
+  alert(result)
+
 
 }
-  // Combine the pairs into a single string and replace all %-encoded spaces to
-  // the '+' character; matches the behaviour of browser form submissions.
-
-
-
-
-  // Define what happens in case of error
-  // XHR.addEventListener("error", function(event) {
-  //   // This is normally a timeout or connection error.
-  //   alert("Oops! Something went wrong.");
-  // });
 
 
