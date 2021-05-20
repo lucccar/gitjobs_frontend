@@ -1,13 +1,15 @@
 let form = document.getElementsByTagName("form")[0];
 let results = document.getElementsByClassName("results")[0];
+let button = document.getElementsByTagName("button")[0];
 
-form.addEventListener("submit", function(e) {
-  sendData();
-});
+const record_search = 'http://localhost:5000/record_search'
+
+
 
 // https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Sending_forms_through_JavaScript
 function sendData() {
-  // var XHR = new XMLHttpRequest();
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+  var XHR = new XMLHttpRequest();
   let search = {}
 
   // radio buttons
@@ -27,6 +29,25 @@ function sendData() {
     }
   }
 
+  fetch(record_search, {
+    method: form.getAttribute("method"),body: JSON.stringify(search)})
+      .then(function(response) {return response.json();})
+      .then(function(data) {
+        console.log("Data returned from python server", data)
+  });
+
+  // let response = fetch(record_search, {
+  //   method: "POST",
+  //   headers: {'Content-Type': 'application/json'},
+  //   body: JSON.stringify(search),
+  //   mode: "cors"
+  // });
+
+  // alert(response)
+
+  // results.innerHTML = response;
+  
+
   // If search is successful  
   // XHR.addEventListener("load", function(event) {
   //   if (XHR.readyState === XHR.DONE) {
@@ -40,32 +61,15 @@ function sendData() {
   // });
 
   // Set up our request
-  // XHR.open(form.getAttribute("method"), form.getAttribute("action"));
+  // XHR.open(form.getAttribute("method"), record_search);
   // XHR.setRequestHeader("Content-Type", "application/json");
-  // XHR.send(search);
-
-
-
-
-  // fetch(form.getAttribute("action"), {
-  //   method: form.getAttribute("method"),body: JSON.stringify(search)})
-  //     .then(function(response) {return response.json();})
-  //     .then(function(data) {
-  //       console.log("Data returned from python server", data)
-  // });
-
-  let response = await fetch(form.getAttribute("action"), {
-    method: form.getAttribute("method"),
-    headers: {'Content-Type': 'application/json'},
-    json: JSON.stringify(search),
-    body: JSON.stringify(search),
-    mode: "cors"
-  });
-
-  let result = await response.json();
-  alert(result)
+  // XHR.send(JSON.stringify(search));
 
 
 }
 
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  sendData();
+});
 
