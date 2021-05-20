@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Github Jobs Search</title>
+</head>
+
+
+<body>
+    <div class="wrapper">
+        <form action="localhost:8000/record_search">
+            <section class="location">
+            
+                <fieldset>
+                    <p>Select the location to look for jobs</p>
+                    <label>Chicago
+                        <input type="radio" name="location" value="Chicago" checked/>
+                        <span></span>
+                    </label>
+                    <label>San Francisco
+                        <input type="radio" name="location" value="San Francisco" />
+                        <span></span>
+                    </label>
+                    <label>London
+                        <input type="radio" name="location" value="London" />
+                        <span></span>
+                    </label>
+                    <label>Phoenix
+                        <input type="radio" name="location"  value="Phoenix"/>
+                        <span></span>
+                    </label>
+                    <label>Beijing
+                        <input type="radio" name="location" value="Beijing" />
+                        <span></span>
+                    </label>
+                    <label>Paris
+                        <input type="radio" name="location" value="Paris" />
+                        <span></span>
+                    </label>
+                </fieldset>
+            </section>
+                
+            <section class="description">
+                <fieldset>
+                    <p>Select the stack of the job</p>
+                    <label>Javascript
+                        <input type="radio" name="description" value="Javascript" checked/>
+                        <span></span>
+                    </label>
+                    <label>Java
+                        <input type="radio" name="description" value="Java" />
+                        <span></span>
+                    </label>
+                    <label>Python
+                        <input type="radio" name="description" value="Python" />
+                        <span></span>
+                    </label>
+                    <label>React
+                        <input type="radio" name="description" value="React"/>
+                        <span></span>
+                    </label>
+                    <label>Ruby
+                        <input type="radio" name="description" value="Ruby"/>
+                        <span></span>
+                    </label>
+                    <label>Go
+                        <input type="radio" name="description" value="Go"/>
+                        <span></span>
+                    </label>
+                </fieldset>
+            </section>
+            <button type="submit"> Submit </button>
+        </form>
+    </div>
+    <section class="results"></section>
+
+    <script src="scripts/script.js"></script>
+
+</body>
+  
+  
+</html>

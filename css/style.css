@@ -1,0 +1,107 @@
+body {
+    margin:30px;
+    font-size:18px;
+    display: flex;
+    flex-flow: row nowrap;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+
+.wrapper { 
+    flex-basis: 50%;
+}
+fieldset {
+    border: 0px solid grey;
+    border-radius: 10px;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    margin-bottom: 2%;
+}
+
+.results {
+    flex-basis: 50%;
+}
+
+.location {
+    flex-basis: 44%;
+}
+.description {
+    flex-basis: 44%;
+}
+  
+  /* container */
+  label {
+    display:block;
+    margin-bottom:4px;
+    position: relative; /* to contain absolute elements */
+    padding-left:30px; /* free space for custom radio button */
+    cursor: pointer;
+  }
+  /* hide default radio button  */
+  label input[type=radio] {
+    position: absolute; /* prevent taking any space */
+    /* cross-browser hidingg */
+    opacity: 0;
+    width:0; 
+    height:0;
+  }
+  /* custom radio button */
+  label span {
+    position: absolute;
+    /* position to the free space in <label> */
+    top:0;
+    left:0;
+    width:20px; 
+    height:20px;
+    background-color: #ddd;
+    border-radius: 50%;
+    transition: .3s background-color; /* slight transition */
+  }
+  /* the check icon */
+  label span:after {
+    content: "";
+    position: absolute;
+    display: none;
+    
+    /* middle */
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color:#fff;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+  }
+  label:hover span {
+    background-color: #ccc;
+  }
+  
+  /**** Here's the trick ***/
+  label input:checked ~ span {
+    background-color: #1e71be;
+  }
+  label input:checked ~ span:after {
+    display:block;
+  }
+
+  button {
+
+    /* remove default behavior */
+    appearance:none;
+    -webkit-appearance:none;
+  
+    /* usual styles */
+    padding:10px;
+    border:none;
+    background-color:#3F51B5;
+    color:#fff;
+    font-weight:600;
+    border-radius:5px;
+    width:30%;
+
+  
+  }
+button:hover {
+    background-color:#1e319c;
+}
+button:active {
+    box-shadow:0 0 15px 4px #08157a4b;
+}
