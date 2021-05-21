@@ -7,7 +7,7 @@ body {
   }
 
 .wrapper { 
-    flex-basis: 50%;
+    flex-basis: 45%;
 }
 fieldset {
     border: 0px solid grey;
@@ -16,9 +16,6 @@ fieldset {
     margin-bottom: 2%;
 }
 
-.results {
-    flex-basis: 50%;
-}
 
 .location {
     flex-basis: 44%;
@@ -27,81 +24,128 @@ fieldset {
     flex-basis: 44%;
 }
   
-  /* container */
-  label {
-    display:block;
-    margin-bottom:4px;
-    position: relative; /* to contain absolute elements */
-    padding-left:30px; /* free space for custom radio button */
-    cursor: pointer;
-  }
-  /* hide default radio button  */
-  label input[type=radio] {
-    position: absolute; /* prevent taking any space */
-    /* cross-browser hidingg */
-    opacity: 0;
-    width:0; 
-    height:0;
-  }
-  /* custom radio button */
-  label span {
-    position: absolute;
-    /* position to the free space in <label> */
-    top:0;
-    left:0;
-    width:20px; 
-    height:20px;
-    background-color: #ddd;
-    border-radius: 50%;
-    transition: .3s background-color; /* slight transition */
-  }
-  /* the check icon */
-  label span:after {
-    content: "";
-    position: absolute;
-    display: none;
-    
-    /* middle */
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    background-color:#fff;
-    width:8px;
-    height:8px;
-    border-radius:50%;
-  }
-  label:hover span {
-    background-color: #ccc;
-  }
-  
-  /**** Here's the trick ***/
-  label input:checked ~ span {
-    background-color: #1e71be;
-  }
-  label input:checked ~ span:after {
-    display:block;
-  }
+label {
+  display:block;
+  margin-bottom:4px;
+  position: relative; 
+  padding-left:30px; 
+  cursor: pointer;
+}
+label input[type=radio] {
+  position: absolute; 
+  opacity: 0;
+  width:0; 
+  height:0;
+}
+label span {
+  position: absolute;
+  top:0;
+  left:0;
+  width:20px; 
+  height:20px;
+  background-color: #ddd;
+  border-radius: 50%;
+  transition: .3s background-color; 
+}
+label span:after {
+  content: "";
+  position: absolute;
+  display: none;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  background-color:#fff;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+}
+label:hover span {
+  background-color: #ccc;
+}
 
-  button {
+label input:checked ~ span {
+  background-color: #1e71be;
+}
+label input:checked ~ span:after {
+  display:block;
+}
 
-    /* remove default behavior */
-    appearance:none;
-    -webkit-appearance:none;
-  
-    /* usual styles */
-    padding:10px;
-    border:none;
-    background-color:#3F51B5;
-    color:#fff;
-    font-weight:600;
-    border-radius:5px;
-    width:30%;
+button {
 
-  
-  }
+  appearance:none;
+  -webkit-appearance:none;
+  padding:10px;
+  border:none;
+  background-color:#3F51B5;
+  color:#fff;
+  font-weight:600;
+  border-radius:5px;
+  width:30%;
+
+
+}
 button:hover {
     background-color:#1e319c;
 }
 button:active {
     box-shadow:0 0 15px 4px #08157a4b;
+}
+
+.results {
+  flex-basis: 45%;
+  margin-left: 5%;
+}
+
+.jobs {
+  padding-left: 10%;
+}
+
+
+.nojobs {
+  margin-top: 10rem;
+  color: black;
+  font-weight: bold;
+}
+
+
+a {
+  text-decoration: none;
+  color: #1e319c;
+}
+
+a:hover {
+  color: #2840cc;
+}
+
+tr {
+  padding: 8px 20px;
+  border-bottom: 1px solid rgb(223, 215, 215);
+  margin: none;
+  
+}
+tr:last-of-type {
+  border: none;
+}
+td {
+  padding: 8px 8px;
+
+}
+table {
+  width: 100%;
+}
+tbody span {
+  font-size: 1rem;
+}
+
+table.positionlist {
+  font-size: 14px;
+  color: #999;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table.positionlist .meta span {
+  display: block;
+  text-align: right;
+  color: #666;
 }
