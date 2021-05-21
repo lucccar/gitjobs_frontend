@@ -45,7 +45,12 @@ function updatePage() {
 
   get_jobs_url = get_jobs.concat(search["location"], '/', search["description"])
 
-
+  fetch(record_search_url, {
+      method: 'POST',body: JSON.stringify(search)})
+        .then(function(response) {return response.json();})
+        .then(function(data) {
+          console.log("Data returned from python server", data)
+    });
 
   fetch(get_jobs_url, { method:'GET'})
       .then(function(response) {return response.json();})
