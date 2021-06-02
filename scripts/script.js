@@ -9,7 +9,7 @@ const record_search_url = 'http://localhost:5000/record_search'
 let get_jobs = 'http://localhost:5000/get_jobs/'
 
 
-function updatePage() {
+async function updatePage() {
 
   let search = {}
 
@@ -29,13 +29,13 @@ function updatePage() {
   }
 
 
-  let addStyleToResults = () => {
+  let addStyleToResults = async () => {
     results.style.borderRadius = '10px';
     results.style.boxShadow ='0 0 15px 4px rgba(0,0,0,0.06)';
     results.style.marginBottom = '2%';
   }
 
-  let jobsValidation = () => {
+  let jobsValidation = async () => {
     if (document.getElementsByTagName("tr").length === 0) {
       results.innerHTML = "<div class='nojobs' > There aren't jobs for this stack in this city... </div>"
     }
@@ -45,21 +45,18 @@ function updatePage() {
 
   get_jobs_url = get_jobs.concat(search["location"], '/', search["description"])
 
-  fetch(record_search_url, {
-      method: 'POST',body: JSON.stringify(search)})
-        .then(function(response) {return response.json();})
-        .then(function(data) {
-          console.log("Data returned from python server", data)
-    });
+  let responsePost = await fetch(record_search_url, {method: 'POST',body: JSON.stringify(search)});
+  let jsonData =  await responsePost.json();
+  console.log("Data returned from python server", jsonData)
 
-  fetch(get_jobs_url, { method:'GET'})
-      .then(function(response) {return response.json();})
-      .then(function(jobs_data) {
-        addStyleToResults();
-        results.innerHTML= jobs_data;
-        jobsValidation();
-  });
-}
+
+  let responseGet = await fetch(get_jobs_url, { method:'GET'})
+  let jsonDataGet = await responseGet.json();
+  await addStyleToResults();
+  results.innerHTML = await jsonDataGet;
+  await jobsValidation();
+
+};
 
 
 form.addEventListener("submit", function(e) {
